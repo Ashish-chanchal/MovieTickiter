@@ -1,0 +1,14 @@
+.summery-img{
+    width: auto;
+    height: 400px;
+    margin: 20px;
+}
+.summary-card{
+    display: flex;
+}
+
+@media screen and (max-width: 1000px) {
+    .summary-card{
+        display: block;
+    }
+  }

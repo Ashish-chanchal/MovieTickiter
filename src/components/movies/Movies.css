@@ -1,0 +1,47 @@
+/* User Card */
+.user-card {
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(231, 226, 226, 0.877);
+    border-radius: 10px;
+}   
+
+.user-card img {
+    width: 100%;
+    height: 350px;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.rating-tag{
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+}
+
+.user-info p {
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+
+.btn {
+    border-radius: 5px;
+    padding: 15px 25px;
+    background-color: white;
+    border: 1px solid rgb(245, 231, 231);
+    color: rgb(14, 81, 148);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    color: white;
+    background-color: rgb(14, 81, 148);
+}
