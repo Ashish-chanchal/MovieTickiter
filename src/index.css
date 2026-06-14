@@ -1,13 +1,107 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --brand-black: #040408;
+  --brand-dark-gray: #090911;
+  --brand-red: #ff0055;
+  --brand-red-hover: #ff2a74;
+  --brand-red-glow: rgba(255, 0, 85, 0.45);
+  --brand-blue: #00e5ff;
+  --brand-blue-glow: rgba(0, 229, 255, 0.45);
+  --brand-green: #00ff66;
+  --brand-green-glow: rgba(0, 255, 102, 0.45);
+  --brand-purple: #bd00ff;
+  --brand-purple-glow: rgba(189, 0, 255, 0.4);
+  --brand-gradient: linear-gradient(135deg, #ff0055 0%, #9000ff 100%);
+  --brand-light-gray: #a0a5b5;
+  --font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --glass-bg: rgba(9, 9, 17, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.055);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background: radial-gradient(circle at 50% 0%, #110e20 0%, var(--brand-black) 75%);
+  background-attachment: fixed;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  letter-spacing: 0.15px;
 }
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--brand-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  border: 2px solid var(--brand-black);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-gradient);
+  box-shadow: 0 0 15px var(--brand-red-glow);
+}
+
+/* Global Fade/Up Animations */
+.fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Background Variations */
+body.bg-matte {
+  background: #000000 !important;
+}
+
+body.bg-grid {
+  background: radial-gradient(circle at 50% 0%, #17122b 0%, var(--brand-black) 78%) !important;
+  background-attachment: fixed !important;
+}
+
+body.bg-grid::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 45px 45px;
+  background-position: center;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.8;
+}
+

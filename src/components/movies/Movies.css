@@ -1,47 +1,249 @@
-/* User Card */
-.user-card {
-    margin: 10px;
-    padding: 20px;
-    box-shadow: 0px 0px 10px 0px rgba(231, 226, 226, 0.877);
+.netflix-card {
+  position: relative;
+  width: 210px;
+  height: 315px;
+  background-color: var(--brand-dark-gray);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+  border: 1px solid var(--glass-border);
+}
+
+.netflix-card:hover {
+  transform: translateY(-10px) scale(1.04);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.8), 0 0 25px var(--brand-red-glow);
+  border-color: var(--brand-red);
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+.netflix-card:hover .card-image {
+  transform: scale(1.05);
+}
+
+/* Age Rating badge */
+.card-age-rating {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background-color: rgba(9, 9, 17, 0.8);
+  border: 1px solid var(--glass-border);
+  color: #ffffff;
+  padding: 4px 10px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  border-radius: 6px;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Hover overlay info */
+.card-hover-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(4, 4, 8, 1) 0%, rgba(4, 4, 8, 0.9) 70%, transparent 100%);
+  padding: 22px 18px;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.netflix-card:hover .card-hover-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hover-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.hover-play-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #040408;
+  transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hover-play-btn:hover {
+  background-color: var(--brand-red);
+  color: #ffffff;
+  transform: scale(1.18);
+  box-shadow: 0 0 15px var(--brand-red-glow);
+}
+
+.hover-play-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Active buttons states */
+.hover-play-btn.in-list {
+  background-color: var(--brand-red);
+  color: #ffffff;
+  font-weight: 800;
+  box-shadow: 0 0 10px var(--brand-red-glow);
+}
+
+.hover-play-btn.liked {
+  background-color: var(--brand-green);
+  color: #000000;
+  box-shadow: 0 0 12px var(--brand-green-glow);
+}
+
+.hover-play-btn:disabled {
+  background-color: rgba(255,255,255,0.05);
+  color: #5d6275;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.download-spin-loader {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.card-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.2px;
+}
+
+.card-metadata {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--brand-light-gray);
+  font-weight: 600;
+}
+
+.card-language {
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.card-year {
+  font-weight: 700;
+}
+
+@media (max-width: 576px) {
+  .netflix-card {
+    width: 145px;
+    height: 218px;
     border-radius: 10px;
-}   
-
-.user-card img {
-    width: 100%;
-    height: 350px;
+  }
+  
+  .card-title {
+    font-size: 0.85rem;
+  }
+  .card-age-rating {
+    top: 10px;
+    left: 10px;
+    padding: 2px 6px;
+    font-size: 0.65rem;
+  }
+  .card-hover-info {
+    padding: 14px 10px;
+    gap: 8px;
+  }
+  .hover-play-btn {
+    width: 28px;
+    height: 28px;
+  }
+  .hover-play-btn svg {
+    width: 12px;
+    height: 12px;
+  }
 }
 
-.center {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+/* Classic Framed Card Variations */
+body.card-style-classic .netflix-card {
+  height: 380px;
 }
 
-.rating-tag{
-    display: flex;
-    justify-content: flex-end;
-    position: absolute;
+body.card-style-classic .card-image {
+  height: 72%;
+  border-bottom: 1px solid var(--glass-border);
 }
 
-.user-info p {
-    font-size: 20px;
-    font-weight: bold;
-    display: inline-block;
+body.card-style-classic .card-hover-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 28%;
+  background: rgba(9, 9, 17, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 14px 16px;
+  opacity: 1;
+  transform: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  border-top: 1px solid var(--glass-border);
 }
 
-
-.btn {
-    border-radius: 5px;
-    padding: 15px 25px;
-    background-color: white;
-    border: 1px solid rgb(245, 231, 231);
-    color: rgb(14, 81, 148);
-    font-size: 15px;
-    font-weight: bold;
+body.card-style-classic .netflix-card:hover .card-image {
+  transform: scale(1.02);
 }
 
-.btn:hover {
-    color: white;
-    background-color: rgb(14, 81, 148);
+body.card-style-classic .netflix-card:hover .card-hover-info {
+  background: rgba(9, 9, 17, 0.95);
+}
+
+body.card-style-classic .hover-actions {
+  display: none;
+}
+
+@media (max-width: 576px) {
+  body.card-style-classic .netflix-card {
+    height: 270px;
+  }
+  body.card-style-classic .card-hover-info {
+    height: 30%;
+    padding: 8px 10px;
+  }
 }
