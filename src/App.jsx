@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Movies from './components/allmovies/Moviecon';
 import Summery from './components/Summery/Summery';
 import Bookingform from './components/bookingform/Bookingform';
+import Footer from './components/Footer/Footer';
 
 // Initial Mock Profiles list
 const initialProfiles = [
@@ -204,6 +205,7 @@ function App() {
                 <Route exact path='/book-ticket/Bookingform' element={<Bookingform />} />
               </Routes>
             </div>
+            <Footer/>
           </>
         ) : (
           /* Who's Watching profile selection overlay */
